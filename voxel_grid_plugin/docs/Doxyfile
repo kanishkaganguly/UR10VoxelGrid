@@ -1,0 +1,14 @@
+PROJECT_NAME            = RL Robot Control
+GENERATE_LATEX          = NO
+ENABLE_PREPROCESSING    = YES
+HAVE_DOT                = YES
+PREDEFINED              = SHOW_VIZ USE_CONTROLLER
+EXTRACT_PRIVATE         = YES
+EXTRACT_STATIC          = YES
+EXTRACT_ALL             = NO
+BRIEF_MEMBER_DESC       = YES
+OUTPUT_DIRECTORY        = /root/workspace/src/amazon_project/docs/doxygen_generated
+INPUT                   = /root/workspace/src/amazon_project/src/ /root/workspace/src/amazon_project/include/ /root/workspace/src/amazon_project/tests/ /root/workspace/src/amazon_project/CMakeLists.txt /root/workspace/src/amazon_project/scripts/
+EXAMPLE_PATH            = /root/workspace/src/amazon_project/tests/
+EXCLUDE                 = /root/workspace/src/amazon_project/include/catch.hpp /root/workspace/src/amazon_project/include/prettyprint.hpp
+FILE_PATTERNS = *.cpp *.hpp *.py

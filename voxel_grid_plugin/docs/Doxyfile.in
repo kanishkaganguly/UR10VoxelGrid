@@ -1,0 +1,14 @@
+PROJECT_NAME            = RL Robot Control
+GENERATE_LATEX          = NO
+ENABLE_PREPROCESSING    = YES
+HAVE_DOT                = YES
+PREDEFINED              = SHOW_VIZ USE_CONTROLLER
+EXTRACT_PRIVATE         = YES
+EXTRACT_STATIC          = YES
+EXTRACT_ALL             = NO
+BRIEF_MEMBER_DESC       = YES
+OUTPUT_DIRECTORY        = @PROJECT_SOURCE_DIR@/docs/doxygen_generated
+INPUT                   = @PROJECT_SOURCE_DIR@/src/ @PROJECT_SOURCE_DIR@/include/ @PROJECT_SOURCE_DIR@/tests/ @PROJECT_SOURCE_DIR@/CMakeLists.txt @PROJECT_SOURCE_DIR@/scripts/
+EXAMPLE_PATH            = @PROJECT_SOURCE_DIR@/tests/
+EXCLUDE                 = @PROJECT_SOURCE_DIR@/include/catch.hpp @PROJECT_SOURCE_DIR@/include/prettyprint.hpp
+FILE_PATTERNS = *.cpp *.hpp *.py

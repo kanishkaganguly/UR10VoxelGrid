@@ -1,0 +1,40 @@
+<!-- Static mapping from world coordinate frames to link coordinate frames -->
+<!-- (0,1,2) ==> (x,y,z) for both coordinate systems -->
+<!-- Encode negative sign as 1, since -0 can't be read correctly by parser -->
+<links>
+    <link name="table_link">
+        <map_0>0</map_0>
+        <map_1>1</map_1>
+        <map_2>2</map_2>
+    </link>
+    <link name="shoulder_link">
+        <map_0>0</map_0>
+        <map_1>1</map_1>
+        <map_2>2</map_2>
+    </link>
+    <link name="upper_arm_link">
+        <map_0>2</map_0>
+        <map_1>1</map_1>
+        <map_2>10</map_2>
+    </link>
+    <link name="forearm_link">
+        <map_0>2</map_0>
+        <map_1>1</map_1>
+        <map_2>10</map_2>
+    </link>
+    <link name="wrist_1_link">
+        <map_0>10</map_0>
+        <map_1>1</map_1>
+        <map_2>-2</map_2>
+    </link>
+    <link name="wrist_2_link">
+        <map_0>10</map_0>
+        <map_1>1</map_1>
+        <map_2>-2</map_2>
+    </link>
+    <link name="wrist_3_link">
+        <map_0>10</map_0>
+        <map_1>1</map_1>
+        <map_2>-2</map_2>
+    </link>
+</links>

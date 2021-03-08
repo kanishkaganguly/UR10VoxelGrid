@@ -1,0 +1,9 @@
+# Goal definition
+string      joint_name
+float32     joint_target
+---
+# Result definition
+bool        finished
+---
+# Feedback
+string      status

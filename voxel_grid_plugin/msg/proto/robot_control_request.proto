@@ -1,0 +1,7 @@
+package robot_controller_msgs.msgs;
+
+message RobotControlRequest {
+    required double target_position = 1;
+    required string joint_name = 2;
+    optional double joint_velocity = 3 [default = 10];
+}

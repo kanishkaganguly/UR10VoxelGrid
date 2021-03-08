@@ -1,0 +1,19 @@
+# Goal definition
+string                  model_name                      # name of model to reference
+uint8                   model_command                   # add or delete model
+uint8                   model_size                      # small, medium or large box
+geometry_msgs/Pose      initial_pose                    # initial pose, used when spawning
+geometry_msgs/Pose      target_pose                     # target pose, used when moving model
+uint8                   MODEL_ADD=0                     # enum to add model
+uint8                   MODEL_DELETE=1                  # enum to delete model
+uint8                   MODEL_MOVE=2                    # enum to move model
+uint8                   MODEL_SMALL=0                   # enum for small sized box
+uint8                   MODEL_MED=1                     # enum for medium sized box
+uint8                   MODEL_LARGE=2                   # enum for large sized box
+string                  MODEL_PREFIX=obstacle_
+---
+# Result definition
+bool        finished
+---
+# Feedback
+string      status

@@ -1,0 +1,42 @@
+<?xml version='1.0'?>
+<sdf version="1.4">
+    <model name="obstacle_box_med">
+        <pose>0.15 0.15 0.15 0 0 0</pose>
+        <static>true</static>
+        <link name="obstacle_med_link">
+            <inertial>
+                <mass>2.0</mass>
+                <inertia>
+                    <ixx>0.0075</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                    <ixy>0.0</ixy>          <!-- for a box: ixy = 0 -->
+                    <ixz>0.0</ixz>          <!-- for a box: ixz = 0 -->
+                    <iyy>0.0075</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                    <iyz>0.0</iyz>          <!-- for a box: iyz = 0 -->
+                    <izz>0.0075</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                </inertia>
+            </inertial>
+            <collision name="obstacle_med_collision">
+                <geometry>
+                    <box>
+                        <size>0.15 0.15 0.15</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="obstacle_med_visual">
+                <geometry>
+                    <box>
+                        <size>0.15 0.15 0.15</size>
+                    </box>
+                </geometry>
+            </visual>
+            <sensor name="obstacle_med_contact_sensor" type="contact">
+                <contact>
+                    <collision>obstacle_med_collision</collision>
+                    <topic>/obstacle_med_contact</topic>
+                </contact>
+                <always_on>1</always_on>
+                <update_rate>5</update_rate>
+            </sensor>
+        </link>
+    </model>
+</sdf>

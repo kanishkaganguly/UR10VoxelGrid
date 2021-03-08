@@ -1,0 +1,10 @@
+### Goal definition ###
+# Nothing to add here, just a simple request for VoxelGrid
+---
+### Result definition ###
+int8            num_voxels_per_dim      # This sends out the number of voxels in each dimension
+VoxelData[]     occupied_nodes          # This sends out an array of VoxelData for the occupied nodes in the grid
+VoxelData[]     robot_nodes             # This sends out an array of VoxelData for the robot nodes in the grid
+---
+### Feedback ###
+float32         completion_percent      # Variable to send feedback

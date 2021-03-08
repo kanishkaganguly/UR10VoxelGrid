@@ -1,0 +1,13 @@
+# Goal definition
+float32     sim_time_factor
+uint8       sim_command
+uint8       SIM_INIT=0
+uint8       SIM_STEP=1
+uint8       SIM_PAUSE=2
+uint8       SIM_START=3
+---
+# Result definition
+bool        finished
+---
+# Feedback
+string      status

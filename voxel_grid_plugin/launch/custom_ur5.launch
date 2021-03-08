@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints."/>
+    <arg name="paused" default="false" doc="Starts gazebo in paused mode"/>
+    <arg name="gui" default="true" doc="Starts gazebo gui"/>
+    <arg name="debug" default="false" doc="Gazebo debug mode"/>
+    <arg name="verbose" default="false" doc="Gazebo verbose mode"/>
+    <arg name="world_name" default="$(find voxel_grid_plugin)/worlds/custom_empty.world" doc="Specify world file"/>
+    <!--    <arg name="x_offset" default="0.76" doc="x-offset of robot from the ground"/>-->
+    <!--    <arg name="y_offset" default="0.38" doc="y-offset of robot from the ground"/>-->
+    <!--    <arg name="z_offset" default="0.923" doc="z-offset of robot from the ground"/>-->
+    <arg name="x_offset" default="0.0" doc="x-offset of robot from the ground"/>
+    <arg name="y_offset" default="0.0" doc="y-offset of robot from the ground"/>
+    <arg name="z_offset" default="0.0" doc="z-offset of robot from the ground"/>
+
+    <!-- startup simulated world -->
+    <include file="$(find voxel_grid_plugin)/launch/custom_empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="verbose" value="$(arg verbose)"/>
+    </include>
+
+    <!-- startup simulated world with time delay -->
+    <!--    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">-->
+    <!--        <arg name="time" value="5"/>-->
+    <!--        <arg name="pkg" value="voxel_grid_plugin"/>-->
+    <!--        <arg name="file" value="custom_empty_world.launch"/>-->
+    <!--        <arg name="value" value="world_name:=$(arg world_name) paused:=$(arg paused) gui:=$(arg gui) debug:=$(arg debug) verbose:=$(arg verbose)"/>-->
+    <!--        <arg name="node_name" value="timed_roslaunch"/>-->
+    <!--    </include>-->
+
+    <!-- send robot urdf to param server, converts from xacro to description -->
+    <include file="$(find voxel_grid_plugin)/launch/custom_ur5_upload.launch">
+        <arg name="limited" value="$(arg limited)"/>
+    </include>
+
+    <!-- fetch robot_description from param server and spawn robot in gazebo -->
+    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model robot -x $(arg x_offset) -y $(arg y_offset) -z $(arg z_offset)"
+          respawn="false" output="screen"/>
+
+    <!-- Robot controller related -->
+    <include file="$(find voxel_grid_plugin)/launch/custom_controller_utils.launch"/>
+    <rosparam file="$(find ur_gazebo)/controller/arm_controller_ur5.yaml" command="load"/>
+    <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+</launch>
